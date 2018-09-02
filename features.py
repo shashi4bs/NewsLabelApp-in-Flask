@@ -1,4 +1,4 @@
-
+from lib import *
 word_tokenizer = nltk.word_tokenize
 stop_words = nltk.corpus.stopwords.words('english')
 

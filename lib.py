@@ -5,7 +5,7 @@ import nltk
 import re
 
 nltk.download('punkt')
-nltk.downnload('stopwords')
+nltk.download('stopwords')
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
