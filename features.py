@@ -23,4 +23,4 @@ def tfidfVectorizer(data):
 def countVectorizer(data):
 	cv = CountVectorizer(min_df=0.,max_df=1.)
 	cv_matrix = cv.fit_transform(data['TITLE'])
-	return cv_matrix
+	return cv_matrix.toarray()
