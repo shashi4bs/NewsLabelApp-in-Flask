@@ -24,3 +24,11 @@ def countVectorizer(data):
 	cv = CountVectorizer(min_df=0.,max_df=1.)
 	cv_matrix = cv.fit_transform(data['TITLE'])
 	return cv_matrix.toarray()
+	
+def split_data(cv_matrix,categories):
+    size = cv_matrix.shape[0]
+    training_data = cv_matrix[:int(size*0.80)]
+    testing_data = cv_matrix[int(size*0.80):size]
+    training_op = categories[:int(size*0.80)]
+    testing_op = categories[int(size*0.80):size]
+    return training_data,testing_data,training_op,testing_op 

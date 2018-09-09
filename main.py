@@ -11,7 +11,7 @@ data = pd.read_csv('./train_data.csv');
 #size = 2000
 #data = data[:size]
 #uncomment to select a fraction of dataset
-#data = data.sample(frac=0.01).reset_index(drop=True)
+data = data.sample(frac=0.1).reset_index(drop=True)
 
 
 categories = data.CATEGORY.factorize()
@@ -34,7 +34,7 @@ cv_matrix = countVectorizer(data)
 categories = categories[0]
 
 #splitting data into training and test set
-training_data, testing_data, training_op, test_op = train_test_split(cv_matrix,categories,random_state=0)
+training_data, testing_data, training_op, test_op = split_data(cv_matrix,categories)
 
 dtc_model = DecisionTreeClassifier(min_samples_split=8,max_features='auto',criterion='entropy',random_state=10)
 
