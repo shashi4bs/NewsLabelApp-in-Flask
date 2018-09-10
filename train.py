@@ -11,7 +11,7 @@ data = pd.read_csv('./train_data.csv');
 #size = 2000
 #data = data[:size]
 #uncomment to select a fraction of dataset
-#data = data.sample(frac=0.8).reset_index(drop=True)
+data = data.sample(frac=0.01).reset_index(drop=True)
 
 
 categories = data.CATEGORY.factorize()
