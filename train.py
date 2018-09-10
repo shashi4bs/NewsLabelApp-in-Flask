@@ -55,4 +55,4 @@ print("Model Saved.")
 
 print("Model Accuracy on Training Data: ",rfc_model.score(training_data,training_op))
 
-print("Model Accuracy on Training Data: ",rfc_model.score(testing_data,test_op))
+print("Model Accuracy on Testing Data: ",rfc_model.score(testing_data,test_op))
