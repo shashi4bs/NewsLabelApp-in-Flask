@@ -46,9 +46,11 @@ def extract_hedlines(url):
 		content = BeautifulSoup(page.content,'html.parser')
 		lists = content.find_all('p')
 		heading = content.find_all('h1')
+		span = content.find_all('span')
 		headlines = []
 		headlines = remove_tag(heading,headlines)
 		headlines = remove_tag(lists,headlines)
+		headlines = remove_tag(span,headlines)
 		return headlines
 	except:
 		print("Error Retrieving data: ",url)
