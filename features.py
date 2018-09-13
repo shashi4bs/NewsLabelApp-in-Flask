@@ -41,16 +41,18 @@ def remove_tag(lists,headlines):
     return headlines
 
 def extract_hedlines(url):
-	try:
-		page = requests.get(url)
-		content = BeautifulSoup(page.content,'html.parser')
-		lists = content.find_all('p')
-		heading = content.find_all('h1')
-		span = content.find_all('span')
-		headlines = []
-		headlines = remove_tag(heading,headlines)
-		headlines = remove_tag(lists,headlines)
-		headlines = remove_tag(span,headlines)
-		return headlines
-	except:
-		print("Error Retrieving data: ",url)
+	page = requests.get(url)
+	content = BeautifulSoup(page.content,'html.parser')
+	lists = content.find_all('p')
+	heading = content.find_all('h1')
+	span = content.find_all('span')
+	links = content.find_all('a')
+	for i in range(len(links)):
+		links[i] = links[i].text
+	headlines = []
+	headlines = remove_tag(heading,headlines)
+	headlines = remove_tag(lists,headlines)
+	headlines = remove_tag(span,headlines)
+	headlines = remove_tag(links,headlines)
+	return headlines
+	

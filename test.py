@@ -11,7 +11,7 @@ os.system('clear')
 # In[2]:
 print('Fetching News:')
 
-url = ["https://www.bbc.co.uk/","https://in.yahoo.com/?p=us",'https://gadgets.ndtv.com/news']
+url = ["https://www.bbc.co.uk/","https://in.yahoo.com/?p=us",'https://gadgets.ndtv.com/news',"https://timesofindia.indiatimes.com/business/india-business/met-finance-minister-before-leaving-the-country-vijay-mallya/articleshow/65785080.cms",'https://news.google.com/?hl=en-IN&gl=IN&ceid=IN:en']
 
 
 # In[3]:
@@ -30,21 +30,13 @@ for i in range(len(url)):
 
 # In[5]:
 
-
 #considering it to be a specific page for an article 
-for i in range(len(headlines)):
-    if(len(headlines[i][0])>25):
-        headlines[i] = headlines[i][0]
-    else:
-        headlines[i] = headlines[i][1:]
-
-
 # In[6]:
 
 
 for i in range(len(headlines)):
     for lines, j in zip(headlines[i], range(len(headlines[i]))):
-        headlines[i][j] = normalise_text(lines)
+    	headlines[i][j] = normalise_text(lines)
 
 
 # # converting lists of headlines to dataframe
