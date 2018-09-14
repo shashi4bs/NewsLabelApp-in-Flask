@@ -46,7 +46,7 @@ def extract_hedlines(url):
 	lists = content.find_all('p')
 	heading = content.find_all('h1')
 	span = content.find_all('span')
-	links = content.find_all('a')
+	links = content.find_all('a',class_='VDXfz')
 	for i in range(len(links)):
 		links[i] = links[i].text
 	headlines = []
