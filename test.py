@@ -30,8 +30,6 @@ for i in range(len(url)):
 
 # In[5]:
 
-#considering it to be a specific page for an article 
-# In[6]:
 
 
 for i in range(len(headlines)):
@@ -89,6 +87,6 @@ for link in testing_headlines.keys():
 for link in testing_headlines.keys():
     print(link)
     for i in range(len(testing_headlines[link])):
-        if(len(testing_headlines[link]['TITLE'][i])>25 and len(testing_headlines[link]['TITLE'][i])<100):
+        if(len(testing_headlines[link]['TITLE'][i])>40 and len(testing_headlines[link]['TITLE'][i])<100):
             print(testing_headlines[link]['TITLE'][i]," :   ",categories[prediction[link][i]])
 

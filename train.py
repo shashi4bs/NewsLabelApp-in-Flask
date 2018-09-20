@@ -43,7 +43,7 @@ categories = categories[0]
 #splitting data into training and test set
 training_data, testing_data, training_op, test_op = split_data(tv_matrix,categories)
 
-rfc_model = RandomForestClassifier(min_samples_split=4,criterion='entropy',random_state=10)
+rfc_model = RandomForestClassifier(min_samples_split=20,criterion='entropy',random_state=10)
 
 print("Training Model...")
 rfc_model.fit(training_data,training_op)
