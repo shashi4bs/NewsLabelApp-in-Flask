@@ -1,4 +1,4 @@
-# news_classifier
+# NEWSLABEL APP in Flask
 News Labelling App using scikit-learn and Flask
 
 run $bash setup.sh
