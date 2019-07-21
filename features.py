@@ -2,28 +2,7 @@ from lib import *
 word_tokenizer = nltk.word_tokenize
 stop_words = nltk.corpus.stopwords.words('english')
 
-class Transformer(BaseEstimator, TransformerMixin):
-    def __init__(self, cv=None, tv=None):
-        if not cv:
-            self.cv = CountVectorizer()
-        else:
-            self.cv = cv
-        if not tv:
-            self.tv = TfidfTransformer(norm='l2',use_idf=True)
-        else:
-            self.tv = tv
 
-    def fit(self):
-        return self
-
-    def fit_transform(self, data):
-        self.cv_matrix = self.cv.fit_transform(data)
-        self.tv_matrix = self.tv.fit_transform(self.cv_matrix)
-        return self.cv, self.tv,self.tv_matrix
-    
-    def transform(self, data):
-        return self.tv.transform(self.cv.transform(data))
-        
 def normalise_text(data):
     # lower case and remove special characters\whitespaces
     data = re.sub(r'[^a-zA-Z0-9\s]', '', data, re.I)
@@ -33,7 +12,25 @@ def normalise_text(data):
     filtered_tokens = [token for token in tokens if token not in stop_words]
     data = ' '.join(filtered_tokens)
     return data
-
+    
+def tfidfTransformer(data_, tv=None):
+	tv = TfidfTransformer()
+	tv_matrix = tv.fit_transform(data_)
+	return tv_matrix, tv
+	
+def countVectorizer(data, cv=None):
+	cv = CountVectorizer()
+	cv_matrix = cv.fit_transform(data.TITLE)
+	return cv_matrix,cv
+	
+def split_data(cv_matrix,categories):
+    size = cv_matrix.shape[0]
+    training_data = cv_matrix[:int(size*0.80)]
+    testing_data = cv_matrix[int(size*0.80):size]
+    training_op = categories[:int(size*0.80)]
+    testing_op = categories[int(size*0.80):size]
+    return training_data,testing_data,training_op,testing_op
+    
 def remove_tag(lists,headlines):
     tag = re.compile("<.*?>")
     for l in lists:
